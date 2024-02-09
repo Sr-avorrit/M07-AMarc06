@@ -2,7 +2,7 @@
 
 ## Escenari:
 
-![1707496768081](https://file+.vscode-resource.vscode-cdn.net/c%3A/Users/Sr_Av0rr1t/Documents/GitHub/M07-AMarc06/ClabMN/image/06labMN/1707496768081.png)
+![1707496768081](image/06labMN/1707496768081.png)
 
 | Dispositiu | Interfície  | @IP                 |
 | ---------- | ------------ | ------------------- |
