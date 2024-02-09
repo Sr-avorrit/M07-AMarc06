@@ -1,0 +1,5 @@
+# Configuracio PC1
+## Conectarse
+```
+sudo docker exec -it clab-06labMN-pc1 /bin/sh
+```
