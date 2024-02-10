@@ -151,7 +151,7 @@ Per a editar el fitxer pressionarem la lletra *I* i el modifiquem com nosaltres 
 </html>
 ```
 
-Un cop hem editat el fitxer pressionam *Esc* i **escrivim :**wq per a guardar i sortir.
+Un cop hem editat el fitxer pressionam *Esc* i escrivim **:wq** per a guardar i sortir.
 
 
 ## Configuració PC2
