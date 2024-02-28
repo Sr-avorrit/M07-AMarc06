@@ -49,11 +49,13 @@ commit
 ## Configuracio ruta estatica
 
 ```
-
+configure
+set routing-options static route {ip-xarxa-desti}/{mask} next-hop {ip-gateway}
+commit
 ```
 
 ## Veure taula de enrutament
 
 ```
-
+show route
 ```

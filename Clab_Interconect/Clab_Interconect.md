@@ -285,3 +285,39 @@ topology:
     - endpoints: ["nokia:e1-2","juni:eth1"]
     - endpoints: ["juni:eth2","macvlan:ens36"]
 ```
+
+Configuracio PC (pc_b)
+
+```
+ip route add 192.168.1.0/24 via 192.168.3.254
+ip route add 192.168.2.0/29 via 192.168.3.254
+ip route add 192.168.2.8/30 via 192.168.3.254
+```
+
+Configuracio Router Nokia (nokia)
+
+```
+enter candidate
+set / interface ethernet-1/1
+set / interface ethernet-1/1 admin-state enable
+set / interface ethernet-1/1 subinterface 0 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.2.10/30
+set / interface ethernet-1/2
+set / interface ethernet-1/2 admin-state enable
+set / interface ethernet-1/2 subinterface 0 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.2.6/30
+set / network-instance default interface ethernet-1/1.0
+set / network-instance default interface ethernet-1/2.0
+commit now
+```
+
+Configuracio Router Juniper (juni)
+
+```
+configure
+set interfaces ge-0/0/0 unit 0 family inet address 192.168.2.10/30
+set interfaces ge-0/0/1 unit 0 family inet address 192.168.2.6/30
+commit
+```
