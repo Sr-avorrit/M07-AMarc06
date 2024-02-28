@@ -1,0 +1,43 @@
+# MikroTik
+
+Configuracio del router MikroTik
+
+**Nota:** A les interficies s'els ha de sumar un numero
+
+## Acces al Router
+
+**Usuari:** admin	**Contrasenya:** admin
+
+```
+ssh admin@{nom-docker}
+```
+
+## Canviar Nom
+
+```
+system identity set name={nom}
+```
+
+## Descripcio de una interficie
+
+```
+interface ethernet set {nom-interficie} comment="{descripcio}"
+```
+
+## Configurar IP interficie
+
+```
+ip address add address={ip}/{mask} interface={nom-interficie}
+```
+
+## Configuracio ruta estatica
+
+```
+ip route add dst-address={ip-xarxa-desti}/{mask} gateway={ip-gateway}
+```
+
+## Veure taula de enrutament
+
+```
+ip route print
+```
