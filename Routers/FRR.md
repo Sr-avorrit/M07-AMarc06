@@ -2,6 +2,18 @@
 
 Configuracio del router FRR
 
+## .yml
+
+```
+frr:
+   kind: linux
+   image: frrouting/frr:v8.4.1
+   binds:
+     - frr/daemons:/etc/frr/daemons
+   exec:
+     - sysctl -w net.ipv4.ip_forward=1
+```
+
 ## Acces al Router
 
 ```

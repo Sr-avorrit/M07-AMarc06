@@ -4,6 +4,13 @@ Configuracio del router Juniper
 
 **Nota:** A les interficies es diuen ge-0/0/x
 
+## .yml
+
+```
+juniper:
+   kind: juniper_vmx
+   image: vrnetlab/vr-vmx:18.2R1.9
+```
 
 ## Acces al Router
 

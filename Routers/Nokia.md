@@ -2,7 +2,13 @@
 
 Configuracio del router Nokia
 
-**Nota:** 
+## .yml
+
+```
+nokia:
+   kind: nokia_srlinux
+   image: ghcr.io/nokia/srlinux:latest
+```
 
 ## Acces al Router
 

@@ -4,6 +4,14 @@ Configuracio del router MikroTik
 
 **Nota:** A les interficies s'els ha de sumar un numero
 
+## .yml
+
+```
+mikrotik:
+   kind: vr-ros
+   image: vrnetlab/vr-routeros:7.12.1
+```
+
 ## Acces al Router
 
 **Usuari:** admin	**Contrasenya:** admin
