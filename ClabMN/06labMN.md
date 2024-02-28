@@ -2,7 +2,7 @@
 
 ## Escenari:
 
-![1707496768081](src/06labMN/1707496768081.png)
+![1707496768081](src/1707496768081.png)
 
 | Dispositiu | Interfície  | @IP                 |
 | ---------- | ------------ | ------------------- |
@@ -63,8 +63,6 @@ Per a iniciar la instància executarem la seguent comanda:
 ```shell
 sudo clab deploy -t /clab/06labMN/06labMN.yml
 ```
-
-
 
 ## Configuració PC1
 
@@ -153,7 +151,6 @@ Per a editar el fitxer pressionarem la lletra *I* i el modifiquem com nosaltres 
 
 Un cop hem editat el fitxer pressionam *Esc* i escrivim **:wq** per a guardar i sortir.
 
-
 ## Configuració PC2
 
 ### Conectar-se
@@ -210,8 +207,6 @@ ip route add 192.168.X+10.0/30 via 192.168.X+20.254
 ip route add 192.168.X.0/24 via 192.168.X+20.254
 ```
 
-
-
 ## Configuració Rúter Mikrotik
 
 ### Conectar-se
@@ -240,7 +235,6 @@ A continuació volem configurar l'encaminament estàtic per tal que el nostre r�
 ```shell
 /ip route add dst-address=192.168.X+20.0/24 gateway=192.168.X+10.2
 ```
-
 
 ## Configuració Rúter Nokia
 
@@ -285,7 +279,6 @@ set /network-instance default next-hop-groups group GW1 nexthop 1000 ip-address 
 set /network-instance default static-routes route 192.168.X.0/24 next-hop-group GW1
 commit now
 ```
-
 
 ## Activitat
 
