@@ -2,12 +2,10 @@
 
 Configuracio del router FRR
 
-**Nota:** A les interficies s'els ha de sumar un numero
-
 ## Acces al Router
 
 ```
- sudo docker exec -it clab-pc1MF-ffr /bin/sh
+ sudo docker exec -it {nom-docker} /bin/sh
 ```
 
 Un cop estem en el router hem d'iniciar els daemons manualment

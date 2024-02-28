@@ -1,6 +1,6 @@
 # Connectar diferents equips
 
-## Escenari 1:
+## Escenari 1: MacVlan
 
 ![1709128158141](src/E01-1.png)
 
@@ -174,12 +174,9 @@ PING 192.168.6.1 (192.168.6.1): 56 data bytes
 round-trip min/avg/max = 1.0725/1.312/1.440 ms
 ```
 
-
 ---
 
-
-
-## Escenari 2:
+## Escenari 2: VxLan
 
 ![1709133100042](src/E02-1.png)
 
@@ -217,10 +214,16 @@ topology:
   links:
     - endpoints: ["pc_a:eth1","mk:eth1"]
     - endpoints: ["mk:eth2","ffr:eth1"]
-    - endpoints: ["frr:eth2","macvlan:ens34"]
+    - endpoints: ["frr:eth2","host:vx1"]
 ```
 
 **Nota:** Important crear una carpeta al interior de la del projecte anomenada frr i en el seu interior inserir el fitxer [daemons](src/daemons)
+
+Inicialitzem el contenidor i despres creem una vxlan entre el PC1 i el PC2
+
+```
+sudo clab tools vxlan create --remote {ip-PC2} --id 10 --link vx1
+```
 
 Configuracio PC (pc_a)
 
@@ -254,7 +257,6 @@ ip route 192.168.3.0/24 192.168.2.6
 do wr
 ```
 
-
 ### PC 2:
 
 Ara crearem el segon fitxer .yml al qual anomenarem pc2JN.yml
@@ -283,7 +285,13 @@ topology:
   links:
     - endpoints: ["pc_b:eth1","nokia:e1-1"]
     - endpoints: ["nokia:e1-2","juni:eth1"]
-    - endpoints: ["juni:eth2","macvlan:ens36"]
+    - endpoints: ["juni:eth2","host:vx2"]
+```
+
+Inicialitzem el contenidor i despres creem una vxlan entre el PC1 i el PC2
+
+```
+sudo clab tools vxlan create --remote {ip-PC1} --id 10 --link vx1
 ```
 
 Configuracio PC (pc_b)
@@ -310,6 +318,9 @@ set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.2.6/30
 set / network-instance default interface ethernet-1/1.0
 set / network-instance default interface ethernet-1/2.0
+set /network-instance default next-hop-groups group GW1 nexthop 1000 ip-address 192.168.2.10
+set /network-instance default static-routes route 192.168.1.0/24 next-hop-group GW1
+set /network-instance default static-routes route 192.168.2.0/29 next-hop-group GW1
 commit now
 ```
 
@@ -319,5 +330,14 @@ Configuracio Router Juniper (juni)
 configure
 set interfaces ge-0/0/0 unit 0 family inet address 192.168.2.10/30
 set interfaces ge-0/0/1 unit 0 family inet address 192.168.2.6/30
+set routing-options static route 192.168.1.0/24 next-hop 192.168.2.5
+set routing-options static route 192.168.2.0/30 next-hop 192.168.2.5
+set routing-options static route 192.168.3.0/24 next-hop 192.168.2.9
 commit
+```
+
+Un cop hem acavat destruim les VxLan's que em creat fent us de la comanda seguent:
+
+```
+sudo clab tools vxlan delete
 ```
