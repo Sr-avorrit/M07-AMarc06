@@ -41,7 +41,6 @@ hostname {nom}
 configure terminal
 interface {nom-interficie}
 description "{descripcio}"
-
 ```
 
 ## Configurar IP interficie
