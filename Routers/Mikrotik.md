@@ -43,6 +43,11 @@ ip address add address={ip}/{mask} interface={nom-interficie}
 ```
 ip route add dst-address={ip-xarxa-desti}/{mask} gateway={ip-gateway}
 ```
+## Eliminar ruta estatica
+```
+ip route print
+ip route remove number=x
+```
 
 ## Veure taula de enrutament
 
