@@ -213,7 +213,7 @@ topology:
 
   links:
     - endpoints: ["pc_a:eth1","mk:eth1"]
-    - endpoints: ["mk:eth2","ffr:eth1"]
+    - endpoints: ["mk:eth2","frr:eth1"]
     - endpoints: ["frr:eth2","host:vx1"]
 ```
 
@@ -261,7 +261,7 @@ do wr
 
 Ara crearem el segon fitxer .yml al qual anomenarem pc2JN.yml
 
-```
+```yml
 name: pc2JN
 
 topology:
