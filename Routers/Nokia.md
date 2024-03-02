@@ -52,6 +52,13 @@ set /network-instance default static-routes route {ip-xarxa-desti}/{mask} next-h
 commit now
 ```
 
+## Eliminar ruta estatica
+```
+enter candidate
+delete /network-instance default static-routes route {ip-xarxa-desti}/{mask}
+commit now
+```
+
 ## Veure taula de enrutament
 
 ```
