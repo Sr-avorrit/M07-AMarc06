@@ -21,13 +21,17 @@ ssh admin@{nom-docker}
 ## Canviar Nom
 
 ```
-
+enter candidate
+system name host-name {nom}
+commit now
 ```
 
 ## Descripcio de una interficie
 
 ```
-
+enter candidate
+set / network-instance default description "{descripcio}"
+commit now
 ```
 
 ## Configurar IP interficie
@@ -62,5 +66,5 @@ commit now
 ## Veure taula de enrutament
 
 ```
-
+show network-instance route-table ipv4-unicast summary
 ```
