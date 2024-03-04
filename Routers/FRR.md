@@ -17,15 +17,7 @@ frr:
 ## Acces al Router
 
 ```
- sudo docker exec -it {nom-docker} /bin/sh
-```
-
-Un cop estem en el router hem d'iniciar els daemons manualment
-
-```
-cd /usr/lib/frr
-./watchfrr zebra eigrpd &
-vtysh
+ sudo docker exec -it {nom-docker} vtysh
 ```
 
 ## Canviar Nom
