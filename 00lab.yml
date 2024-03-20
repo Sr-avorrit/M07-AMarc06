@@ -1,0 +1,40 @@
+name: 00lab
+topology:
+  nodes:
+      pc_a:
+        kind: linux
+        image: yobasystems/alpine-nginx
+        exec: 
+          - apk add sudo
+          - apk add curl
+          - apk add traceroute
+          - apk add tcpdump
+          - ip address add 192.168.1.1/24 via eth1
+      pc_b:
+        kind: linux
+        image: yobasystems/alpine-nginx
+        exec: 
+          - apk add sudo
+          - apk add curl
+          - apk add traceroute
+          - apk add tcpdump
+          - ip address add 192.168.3.1/24 via eth1
+      mk:
+        kind: vr-ros
+        image: vrnetlab/vr-routeros:7.12.1
+      FRR:
+        kind: vr-ros
+        image: vrnetlab/vr-routeros:7.12.1
+      juni:
+        kind: juniper_vmx
+        image: vrnetlab/vr-vmx:18.2R1.9
+      nokia:
+        kind: nokia_srlinux
+        image: ghcr.io/nokia/srlinux:latest
+
+  links:
+    - endpoints: ["pc_a:eth1","mk:eth1"]
+    - endpoints: ["mk:eth2","FRR:eth1"]
+    - endpoints: ["juni:eth1","nokia:e1-2"]
+    - endpoints: ["nokia:e1-1","pc_b:eth1"]
+    - endpoints: ["FRR:eth2","juni:eth2"]
